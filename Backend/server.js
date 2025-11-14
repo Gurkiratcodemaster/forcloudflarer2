@@ -2,15 +2,16 @@
 import express from 'express';
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import 'dotenv/config'; // Loads .env file
+import 'dotenv/config';
 import cors from 'cors';
 import crypto from 'crypto';
 
 const app = express();
 const port = 3001;
 
-// Allow requests from your future frontend
-app.use(cors({ origin: 'http://localhost:3000' })); // Adjust if your frontend runs elsewhere
+// Allow ALL origins (any website can call your backend)
+app.use(cors()); 
+// OR: app.use(cors({ origin: '*' }));
 
 const s3Client = new S3Client({
   region: "auto",
@@ -21,7 +22,6 @@ const s3Client = new S3Client({
   },
 });
 
-// Endpoint to get a presigned URL for uploading
 app.post('/api/generate-upload-url', async (req, res) => {
   console.log("Request received to generate upload URL");
 
@@ -33,7 +33,7 @@ app.post('/api/generate-upload-url', async (req, res) => {
   });
 
   try {
-    const uploadUrl = await getSignedUrl(s3Client, command, { expiresIn: 300 }); // URL valid for 5 minutes
+    const uploadUrl = await getSignedUrl(s3Client, command, { expiresIn: 300 });
     res.json({ uploadUrl, key: randomFileName });
   } catch (err) {
     console.error("Error generating URL:", err);

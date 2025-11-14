@@ -1,0 +1,94 @@
+.container {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2rem 3rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.title {
+  color: #111827;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.input {
+  font-size: 1rem;
+}
+
+/* Style the button part of the file input */
+.input::file-selector-button {
+  font-weight: 500;
+  color: #374151;
+  background-color: #f9fafb;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.input::file-selector-button:hover {
+  background-color: #f3f4f6;
+}
+
+.button {
+  background-color: #0070f3;
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.button:hover {
+  background-color: #005bb5;
+}
+
+.button:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.status {
+  color: #4a5568;
+  min-height: 1.5rem; /* Prevents layout shift when text appears */
+}
+
+.result {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+}
+
+.result a {
+  color: #166534;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.result a:hover {
+  text-decoration: underline;
+}

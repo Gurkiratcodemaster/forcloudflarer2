@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import styles from './page.module.css';
 
 /**
  * A simple component to upload a file to Cloudflare R2 using a presigned URL
@@ -91,17 +92,17 @@ export default function HomePage() {
   }
 
   return (
-    <main style={{ padding: '2rem' }}>
-      <h1>Upload Your Notes</h1>
-      <form onSubmit={handleUpload}>
-        <input type="file" onChange={handleFileChange} disabled={isUploading} />
-        <button type="submit" disabled={isUploading}>
+    <main className={styles.container}>
+      <h1 className={styles.title}>Upload Your Notes</h1>
+      <form onSubmit={handleUpload} className={styles.form}>
+        <input type="file" onChange={handleFileChange} disabled={isUploading} className={styles.input} />
+        <button type="submit" disabled={isUploading} className={styles.button}>
           {isUploading ? 'Uploading...' : 'Upload'}
         </button>
       </form>
-      <p>Status: {statusMessage}</p>
+      <p className={styles.status}>Status: {statusMessage}</p>
       {uploadedFileKey && (
-        <div>
+        <div className={styles.result}>
           <p>File uploaded successfully!</p>
           {/* This link won't work yet, but we will build this page next! */}
           <p>
