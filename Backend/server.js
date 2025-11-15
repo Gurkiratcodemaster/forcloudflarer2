@@ -10,8 +10,11 @@ const app = express();
 const port = 3001;
 
 // Allow ALL origins (any website can call your backend)
-app.use(cors()); 
-// OR: app.use(cors({ origin: '*' }));
+// For production, you should restrict this to your frontend's domain
+// For example: app.use(cors({ origin: 'https://your-frontend-domain.com' }));
+app.use(cors({ 
+  origin: process.env.FRONTEND_ORIGIN || '*' // Use an environment variable for the frontend URL
+}));
 
 const s3Client = new S3Client({
   region: "auto",
